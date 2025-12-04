@@ -1,4 +1,5 @@
-import { X, ChevronLeft, ChevronRight, Download } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, ShoppingCart, Check } from "lucide-react";
+import { useCart } from "@/contexts/CartContext";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Photo, getPhotographerById } from "@/data/mockData";
@@ -18,9 +19,12 @@ export const PhotoModal = ({
   onClose,
   onNavigate,
 }: PhotoModalProps) => {
+  const { items, addToCart } = useCart();
+
   if (!photo) return null;
 
   const currentIndex = photos.findIndex((p) => p.id === photo.id);
+  const isInCart = items.some((item) => item.id === photo.id);
   const hasPrev = currentIndex > 0;
   const hasNext = currentIndex < photos.length - 1;
   const photographer = getPhotographerById(photo.photographerId);
@@ -67,11 +71,22 @@ export const PhotoModal = ({
           </div>
           <div className="flex items-center gap-2">
             <Button
-              variant="ghost"
-              size="icon"
-              className="text-card/70 hover:bg-card/10 hover:text-card"
+              variant={isInCart ? "secondary" : "default"}
+              size="sm"
+              onClick={() => !isInCart && addToCart(photo)}
+              className={isInCart ? "bg-card/20 text-card" : ""}
             >
-              <Download className="h-5 w-5" />
+              {isInCart ? (
+                <>
+                  <Check className="h-4 w-4 mr-1" />
+                  Added
+                </>
+              ) : (
+                <>
+                  <ShoppingCart className="h-4 w-4 mr-1" />
+                  Add to Cart
+                </>
+              )}
             </Button>
             <Button
               variant="ghost"
