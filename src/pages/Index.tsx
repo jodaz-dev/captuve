@@ -2,6 +2,7 @@ import { useState, useMemo } from "react";
 import { Header } from "@/components/Header";
 import { SearchBox } from "@/components/SearchBox";
 import { EventCard } from "@/components/EventCard";
+import { Footer } from "@/components/Footer";
 import { events } from "@/data/mockData";
 
 const Index = () => {
@@ -73,12 +74,7 @@ const Index = () => {
         </section>
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-border bg-card/50 py-6">
-        <div className="container text-center text-sm text-muted-foreground">
-          <p>© 2025 EventShot. Todos los derechos reservados.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
