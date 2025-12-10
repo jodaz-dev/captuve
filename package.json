@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "check": "pnpm -s run typecheck && pnpm -s run lint:ci"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

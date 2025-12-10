@@ -16,16 +16,23 @@ COPY . ./
 
 RUN pnpm run build
 
-# Use a minimal Node image to serve static files with 'serve'
-FROM node:lts-alpine
+FROM node:lts-alpine AS production
 
-# Use a minimal Node image to serve static files with 'serve'
 WORKDIR /app
 
-RUN npm install -g serve
+# Enable corepack and pnpm
+RUN corepack enable && corepack prepare pnpm@latest --activate
+
+# Copy package files
+COPY package.json pnpm-lock.yaml ./
+
+# Install only production dependencies
+RUN pnpm install --production --frozen-lockfile
 
 # Copy built assets from builder
-COPY --from=build /app/dist ./dist
+COPY --from=build /app/.next ./.next
+COPY --from=build /app/public ./public
+COPY --from=build /app/next.config.mjs ./next.config.mjs
 
-EXPOSE 8080
-CMD ["serve", "-s", "dist", "-l", "8080"]
+EXPOSE 3000
+CMD ["pnpm", "run", "start"]

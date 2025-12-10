@@ -26,17 +26,17 @@ export default function Profile() {
     logout();
   };
 
-  const handleProfileUpdate = (data: any) => {
+  const handleProfileUpdate = (data: Record<string, unknown>) => {
     console.log("Profile update:", data);
     toast.success("Perfil actualizado correctamente");
   };
 
-  const handleEmailUpdate = (data: any) => {
+  const handleEmailUpdate = (data: Record<string, unknown>) => {
     console.log("Email update:", data);
     toast.success("Correo electrónico actualizado correctamente");
   };
 
-  const handlePasswordUpdate = (data: any) => {
+  const handlePasswordUpdate = (data: Record<string, unknown>) => {
     console.log("Password update:", data);
     toast.success("Contraseña actualizada correctamente");
   };
