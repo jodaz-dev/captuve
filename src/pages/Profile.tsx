@@ -57,26 +57,26 @@ export default function Profile() {
           <Link to="/photographer-profile">
             <Button variant="outline" className="w-full justify-start gap-3 h-14">
               <Camera className="h-5 w-5" />
-              <span>Crear cuenta como fotógrafo</span>
+              <span>Cuenta de Fotógrafo</span>
             </Button>
           </Link>
-          
 
-          <AccountProfileSection 
-            user={user} 
-            onUpdate={handleProfileUpdate} 
+
+          <AccountProfileSection
+            user={user}
+            onUpdate={handleProfileUpdate}
           />
-          
-          <EmailSection 
-            email={user.email} 
-            onUpdate={handleEmailUpdate} 
+
+          <EmailSection
+            email={user.email}
+            onUpdate={handleEmailUpdate}
           />
-          
-          <PasswordSection 
-            onUpdate={handlePasswordUpdate} 
+
+          <PasswordSection
+            onUpdate={handlePasswordUpdate}
           />
-          
-          <ExitDeletionSection 
+
+          <ExitDeletionSection
             onLogout={handleLogout}
             onDeleteAccount={handleDeleteAccount}
           />
