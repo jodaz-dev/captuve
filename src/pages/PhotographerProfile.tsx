@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { ArrowLeft, Upload, Trash2 } from "lucide-react";
+import { ArrowLeft, Upload, Trash2, ClipboardList } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -171,17 +171,28 @@ export default function PhotographerProfile() {
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-2xl mx-auto">
           {/* Back button and title */}
-          <div className="flex items-center gap-3 mb-6">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => navigate("/profile")}
-            >
-              <ArrowLeft className="h-5 w-5" />
-            </Button>
-            <h1 className="text-xl font-semibold">
-              {photographer ? "Perfil de Fotógrafo" : "Crear cuenta de fotógrafo"}
-            </h1>
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center gap-3">
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => navigate("/profile")}
+              >
+                <ArrowLeft className="h-5 w-5" />
+              </Button>
+              <h1 className="text-xl font-semibold">
+                {photographer ? "Perfil de Fotógrafo" : "Crear cuenta de fotógrafo"}
+              </h1>
+            </div>
+            {photographer && (
+              <Button
+                variant="outline"
+                onClick={() => navigate("/photographer/orders")}
+              >
+                <ClipboardList className="mr-2 h-4 w-4" />
+                Ver órdenes
+              </Button>
+            )}
           </div>
 
           <p className="text-muted-foreground mb-6">
