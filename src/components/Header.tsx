@@ -7,7 +7,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 export const Header = () => {
   const { totalItems } = useCart();
-  const { isAuthenticated, user, photographer } = useAuth();
+  const { isAuthenticated, photographer } = useAuth();
   const navigate = useNavigate();
   const isPhotographer = !!photographer;
 
