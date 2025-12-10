@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Camera, Menu, User, ShoppingCart } from "lucide-react";
+import { Camera, Menu, User, ShoppingCart, Store } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
@@ -7,8 +7,9 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 export const Header = () => {
   const { totalItems } = useCart();
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, user, photographer } = useAuth();
   const navigate = useNavigate();
+  const isPhotographer = !!photographer;
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-card/80 backdrop-blur-md">
@@ -44,6 +45,13 @@ export const Header = () => {
               )}
             </Button>
           </Link>
+          {isPhotographer && (
+            <Link to="/store">
+              <Button variant="ghost" size="icon" className="text-muted-foreground">
+                <Store className="h-5 w-5" />
+              </Button>
+            </Link>
+          )}
           <Button
             variant="ghost"
             size="icon"
@@ -81,6 +89,14 @@ export const Header = () => {
               >
                 Carrito {totalItems > 0 && `(${totalItems})`}
               </Link>
+              {isPhotographer && (
+                <Link
+                  to="/store"
+                  className="text-lg font-medium text-foreground transition-colors hover:text-primary"
+                >
+                  Tienda
+                </Link>
+              )}
               <Link
                 to="/"
                 className="text-lg font-medium text-foreground transition-colors hover:text-primary"
