@@ -74,8 +74,10 @@ export function PhotographerDetails({ data, onUpdate }: PhotographerDetailsProps
   };
 
   const onSubmit = (formData: PhotographerDetailsFormData) => {
-    const updatedData = {
-      ...formData,
+    const updatedData: PhotographerDetailsData = {
+      brandName: formData.brandName,
+      email: formData.email,
+      description: formData.description,
       logo: logoPreview || undefined,
       watermark: watermarkPreview || undefined,
     };

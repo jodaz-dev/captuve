@@ -49,7 +49,7 @@ export function PaymentDetails({ data, onUpdate }: PaymentDetailsProps) {
   });
 
   const onSubmit = (formData: PaymentDetailsFormData) => {
-    onUpdate(formData);
+    onUpdate(formData as PaymentDetailsData);
     setIsEditing(false);
   };
 
