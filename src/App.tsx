@@ -11,7 +11,7 @@ import Cart from "./pages/Cart";
 import Auth from "./pages/Auth";
 import Profile from "./pages/Profile";
 import PhotographerProfile from "./pages/PhotographerProfile";
-import Store from "./pages/Store";
+import PhotographerOrders from "./pages/PhotographerOrders";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
 import NotFound from "./pages/NotFound";
@@ -33,7 +33,7 @@ const App = () => (
               <Route path="/auth" element={<Auth />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/photographer-profile" element={<PhotographerProfile />} />
-              <Route path="/store" element={<Store />} />
+              <Route path="/photographer/orders" element={<PhotographerOrders />} />
               <Route path="/terms" element={<Terms />} />
               <Route path="/privacy" element={<Privacy />} />
               <Route path="*" element={<NotFound />} />
